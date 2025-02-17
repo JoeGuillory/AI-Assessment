@@ -3,6 +3,7 @@ class Transform2D;
 class Collider;
 class Component;
 #include "DynamicArray.h"
+#include "Vector2.h"
 
 class Actor
 {
@@ -58,8 +59,8 @@ public:
     T* GetComponent(T* component);
 
 
-   
-
+    MathLibrary::Vector2 getVelocity() { return m_velocity; }
+    void setVelocity(MathLibrary::Vector2 velocity) { m_velocity = velocity; }
     /// <summary>
     /// Called during the first update after an actor is added to a scene.
     /// </summary>
@@ -106,6 +107,7 @@ private:
     Transform2D* m_transform;
     Collider* m_collider;
     DynamicArray<Component*> m_components;
+    MathLibrary::Vector2 m_velocity;
 };
 
 template<typename T>

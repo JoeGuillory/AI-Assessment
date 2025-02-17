@@ -150,6 +150,7 @@
     <ClCompile Include="AABBCollider.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorArray.cpp" />
+    <ClCompile Include="Agent.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SampleScene.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SeekComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Transform2D.cpp" />
   </ItemGroup>
@@ -165,6 +167,7 @@
     <ClInclude Include="AABBCollider.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorArray.h" />
+    <ClInclude Include="Agent.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Component.h" />
@@ -173,6 +176,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="SampleScene.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SeekComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Transform2D.h" />
   </ItemGroup>
@@ -188,6 +192,9 @@
       <DeploymentContent>true</DeploymentContent>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </Image>
+    <Image Include="Images\bullet.png" />
+    <Image Include="Images\enemy.png" />
+    <Image Include="Images\player.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
