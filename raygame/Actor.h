@@ -2,6 +2,7 @@
 class Transform2D;
 class Collider;
 class Component;
+#include "DynamicArray.h"
 
 class Actor
 {
@@ -47,10 +48,17 @@ public:
     /// <returns>A pointer to the component if a match was found.
     /// Returns nullptr if a match wasn't found.</returns>
     
+    template<typename T>
+    T* AddComponent(T* component);
 
-    Component* getComponent(const char* componentName);
-    Component* addComponent(Component* component);
-    bool removeComponent(const char* componentName);
+    template<typename T>
+    bool RemoveComponent(T* component);
+
+    template<typename T>
+    T* GetComponent(T* component);
+
+
+   
 
     /// <summary>
     /// Called during the first update after an actor is added to a scene.
@@ -97,7 +105,49 @@ private:
     bool m_started;
     Transform2D* m_transform;
     Collider* m_collider;
-    Component** m_components;
-    int m_componentCount;
+    DynamicArray<Component*> m_components;
 };
 
+template<typename T>
+inline T* Actor::AddComponent(T* component)
+{
+    Component* ptr = dynamic_cast<Component*>(component);
+    if (ptr == nullptr)
+        return nullptr;
+    else
+    {
+        m_components.Add(component);
+        return component;
+    }
+}
+
+template<typename T>
+inline bool Actor::RemoveComponent(T* component)
+{
+    Component* ptr = dynamic_cast<Component*>(component);
+    if (ptr == nullptr)
+        return false;
+    else
+    {
+        m_components.Remove(component);
+        return true;
+    }
+}
+
+template<typename T>
+inline T* Actor::GetComponent(T* component)
+{
+    Component* ptr = dynamic_cast<Component*>(component);
+    if (ptr == nullptr)
+        return false;
+    else
+    {
+        for (Component* element : m_components)
+        {
+            if (element = component)
+            {
+                return dynamic_cast<T*>(element);
+            }
+        }
+    }
+}

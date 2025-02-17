@@ -127,6 +127,11 @@ public:
     /// </summary>
     void updateTransforms();
 
+    //Moves the object
+    void translate(float x, float y);
+
+    void translate(MathLibrary::Vector2 movement);
+
 private:
     MathLibrary::Matrix3* m_globalMatrix;
     MathLibrary::Matrix3* m_localMatrix;

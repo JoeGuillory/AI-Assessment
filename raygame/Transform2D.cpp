@@ -247,3 +247,16 @@ void Transform2D::updateTransforms()
         //...set the global to be the local
         *m_globalMatrix = *m_localMatrix;
 }
+
+void Transform2D::translate(MathLibrary::Vector2 movement)
+{
+    setLocalPosition(getLocalPosition() + movement);
+}
+
+void Transform2D::translate(float x, float y)
+{
+    setLocalPosition(getLocalPosition() + MathLibrary::Vector2(x, y));
+}
+
+
+
