@@ -28,12 +28,11 @@ void SeekComponent::update(float deltaTime)
 {	
 	if (m_owner && m_target)
 	{
-		MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getLocalPosition().normalize() - m_owner->getTransform()->getLocalPosition().normalize()) * m_maxSpeed;
+		MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition().normalize() - m_owner->getTransform()->getWorldPosition().normalize()) * m_maxSpeed;
 		MathLibrary::Vector2 steeringForce = desiredVelocity - m_owner->getVelocity();
 		m_owner->setVelocity(steeringForce * deltaTime);
 		m_owner->getTransform()->translate(m_owner->getVelocity() * deltaTime);
 	}
-
 }
 
 void SeekComponent::end()

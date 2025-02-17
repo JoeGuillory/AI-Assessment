@@ -11,6 +11,7 @@ void SampleScene::start()
 	agenttest->AddComponent(new SpriteComponent(agenttest, "Images/enemy.png"));
 	agenttest->getTransform()->setScale({ 50, 50 });
 	agenttest->getTransform()->setLocalPosition({ 100,100 });
+	agenttest->setTarget(test);
 	SpriteComponent* sprite = nullptr;
 	test->AddComponent(new SpriteComponent(test, "Images/player.png"));
 	sprite = test->GetComponent(sprite);
