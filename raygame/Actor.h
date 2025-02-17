@@ -46,6 +46,8 @@ public:
     /// <param name="componentName">The name of the component to search for.</param>
     /// <returns>A pointer to the component if a match was found.
     /// Returns nullptr if a match wasn't found.</returns>
+    
+
     Component* getComponent(const char* componentName);
     Component* addComponent(Component* component);
     bool removeComponent(const char* componentName);
