@@ -141,7 +141,7 @@ inline T* Actor::GetComponent(T* component)
 {
     Component* ptr = dynamic_cast<Component*>(component);
     if (ptr == nullptr)
-        return false;
+        return nullptr;
     else
     {
         for (Component* element : m_components)
