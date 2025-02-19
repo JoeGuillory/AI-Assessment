@@ -1,7 +1,7 @@
 #pragma once
 #include <Matrix3.h>
 #include "Actor.h"
-#include "ActorArray.h"
+
 
 class Scene
 {
@@ -68,7 +68,7 @@ public:
 
 private:
     DynamicArray<Actor*> m_actors;
-    ActorArray m_UIElements;
+    DynamicArray<Actor*> m_UIElements;
     MathLibrary::Matrix3* m_world;
     bool m_started;
     int m_UIElementCount;

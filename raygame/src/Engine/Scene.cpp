@@ -14,23 +14,25 @@ MathLibrary::Matrix3* Scene::getWorld()
 
 void Scene::addUIElement(Actor* actor)
 {
-    m_UIElements.addActor(actor);
+    m_UIElements.Add(actor);
 
     //Adds all children of the UI to the scene
     for (int i = 0; i < actor->getTransform()->getChildCount(); i++)
     {
-        m_UIElements.addActor(actor->getTransform()->getChildren()[i]->getOwner());
+        m_UIElements.Add(actor->getTransform()->getChildren()[i]->getOwner());
     }
 }
 
 bool Scene::removeUIElement(int index)
 {
-    return m_UIElements.removeActor(index);
+    m_UIElements.Remove(m_UIElements[index]);
+    return true;
 }
 
 bool Scene::removeUIElement(Actor* actor)
 {
-    return m_UIElements.removeActor(actor);
+    m_UIElements.Remove(actor);
+    return true;
 }
 
 void Scene::addActor(Actor* actor)
@@ -93,12 +95,12 @@ void Scene::update(float deltaTime)
 void Scene::updateUI(float deltaTime)
 {
     //Calls update for all actors in UI array
-    for (int i = 0; i < m_UIElements.getLength(); i++)
+    for (int i = 0; i < m_UIElements.Length(); i++)
     {
-        if (!m_UIElements.getActor(i)->getStarted())
-            m_UIElements.getActor(i)->start();
+        if (!m_UIElements[i]->getStarted())
+            m_UIElements[i]->start();
 
-        m_UIElements.getActor(i)->update(deltaTime);
+        m_UIElements[i]->update(deltaTime);
     }
 }
 
@@ -114,9 +116,9 @@ void Scene::draw()
 void Scene::drawUI()
 {
     //Calls draw for all actors in UI array
-    for (int i = 0; i < m_UIElements.getLength(); i++)
+    for (int i = 0; i < m_UIElements.Length(); i++)
     {
-        m_UIElements.getActor(i)->draw();
+        m_UIElements[i]->draw();
     }
 }
 
