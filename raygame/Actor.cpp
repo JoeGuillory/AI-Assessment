@@ -23,6 +23,11 @@ Actor::Actor(float x, float y, const char* name = "Actor")
     m_name = name;
 }
 
+void Actor::addForce(MathLibrary::Vector2 force)
+{
+    setVelocity(getVelocity() + force);
+}
+
 void Actor::start()
 {
     m_started = true;

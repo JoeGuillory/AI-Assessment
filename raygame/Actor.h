@@ -61,6 +61,9 @@ public:
 
     MathLibrary::Vector2 getVelocity() { return m_velocity; }
     void setVelocity(MathLibrary::Vector2 velocity) { m_velocity = velocity; }
+
+    void addForce(MathLibrary::Vector2 force);
+
     /// <summary>
     /// Called during the first update after an actor is added to a scene.
     /// </summary>

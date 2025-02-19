@@ -1,39 +1,35 @@
-#include "SeekComponent.h"
+#include "FleeComponent.h"
 #include "Vector2.h"
 #include "Actor.h"
 #include "Transform2D.h"
 #include "Vector2.h"
 #include <cmath>
-SeekComponent::SeekComponent()
+FleeComponent::FleeComponent()
 {
-	m_target = nullptr;
 	m_enabled = true;
 }
 
-SeekComponent::SeekComponent(Actor* owner, Actor* target, float max_velocity)
+FleeComponent::FleeComponent(Actor* owner, Actor* target, float maxspeed): m_target(target), m_maxSpeed(maxspeed)
 {
 	m_owner = owner;
-	m_target = target;
-	m_maxSpeed = max_velocity;
 	m_enabled = true;
 }
 
-SeekComponent::~SeekComponent()
+FleeComponent::~FleeComponent()
 {
 }
 
-void SeekComponent::start()
+void FleeComponent::start()
 {
-	
 }
 
-void SeekComponent::update(float deltaTime)
-{	
+void FleeComponent::update(float deltaTime)
+{
 	if (m_enabled)
 	{
 		if (m_owner && m_target)
 		{
-			MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition() - m_owner->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
+			MathLibrary::Vector2 desiredVelocity = (m_owner->getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
 			MathLibrary::Vector2 steeringForce = desiredVelocity - m_owner->getVelocity();
 			m_owner->addForce(steeringForce * deltaTime);
 			m_owner->getTransform()->translate(m_owner->getVelocity() * deltaTime);
@@ -42,6 +38,6 @@ void SeekComponent::update(float deltaTime)
 	}
 }
 
-void SeekComponent::end()
+void FleeComponent::end()
 {
 }

@@ -1,6 +1,7 @@
 #include "Agent.h"
 #include "Transform2D.h"
 #include "SeekComponent.h"
+#include "FleeComponent.h"
 Agent::Agent() : Actor::Actor()
 {
 }
@@ -19,7 +20,9 @@ void Agent::start()
 {
 	Actor::start();
 	m_maxSpeed = 100;
-	AddComponent<SeekComponent>(new SeekComponent(this, m_target, m_maxSpeed));
+	auto seek = AddComponent<SeekComponent>(new SeekComponent(this, m_target, m_maxSpeed));
+	auto flee = AddComponent<FleeComponent>(new FleeComponent(this, m_target, m_maxSpeed));
+	seek->disable();
 }
 
 void Agent::update(float deltaTime)

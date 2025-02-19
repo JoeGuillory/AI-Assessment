@@ -10,4 +10,5 @@ Component::Component(Actor* owner, const char* name)
 {
 	m_owner = owner;
 	m_name = name;
+	m_enabled = true;
 }

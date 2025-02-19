@@ -155,6 +155,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="FleeComponent.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SampleScene.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="FleeComponent.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="SampleScene.h" />
     <ClInclude Include="Scene.h" />
