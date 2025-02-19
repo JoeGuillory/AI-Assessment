@@ -53,10 +53,22 @@
     <ClCompile Include="src\Engine\Actors\Agent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Components\SeekComponent.cpp">
+    <ClCompile Include="src\Engine\Components\Behavior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Components\FleeComponent.cpp">
+    <ClCompile Include="src\Engine\Components\Behaviors\Flee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Components\Behaviors\Seek.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Components\Behaviors\Wander.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Components\Behaviors\Persue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Components\Behaviors\Evade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -100,10 +112,22 @@
     <ClInclude Include="src\Engine\Actors\Agent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Components\SeekComponent.h">
+    <ClInclude Include="src\Engine\Components\Behavior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Components\FleeComponent.h">
+    <ClInclude Include="src\Engine\Components\Behaviors\Flee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Components\Behaviors\Seek.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Components\Behaviors\Wander.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Components\Behaviors\Persue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Components\Behaviors\Evade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

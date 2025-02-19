@@ -4,6 +4,7 @@ Component::Component()
 {
 	m_owner = nullptr;
 	m_name = nullptr;
+	m_enabled = true;
 }
 
 Component::Component(Actor* owner, const char* name)

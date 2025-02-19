@@ -149,7 +149,7 @@ inline T* Actor::GetComponent(T* component)
     {
         for (Component* element : m_components)
         {
-            if (element = component)
+            if (element == component)
             {
                 return dynamic_cast<T*>(element);
             }

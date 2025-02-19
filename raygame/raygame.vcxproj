@@ -153,13 +153,17 @@
     <ClCompile Include="src\Engine\Colliders\CircleCollider.cpp" />
     <ClCompile Include="src\Engine\Collider.cpp" />
     <ClCompile Include="src\Engine\Component.cpp" />
+    <ClCompile Include="src\Engine\Components\Behavior.cpp" />
+    <ClCompile Include="src\Engine\Components\Behaviors\Evade.cpp" />
+    <ClCompile Include="src\Engine\Components\Behaviors\Flee.cpp" />
+    <ClCompile Include="src\Engine\Components\Behaviors\Persue.cpp" />
+    <ClCompile Include="src\Engine\Components\Behaviors\Seek.cpp" />
+    <ClCompile Include="src\Engine\Components\Behaviors\Wander.cpp" />
     <ClCompile Include="src\Engine\Engine.cpp" />
-    <ClCompile Include="src\Engine\Components\FleeComponent.cpp" />
     <ClCompile Include="src\Engine\Components\Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Engine\Scenes\SampleScene.cpp" />
     <ClCompile Include="src\Engine\Scene.cpp" />
-    <ClCompile Include="src\Engine\Components\SeekComponent.cpp" />
     <ClCompile Include="src\Engine\Components\SpriteComponent.cpp" />
     <ClCompile Include="src\Engine\Transform2D.cpp" />
   </ItemGroup>
@@ -170,13 +174,17 @@
     <ClInclude Include="src\Engine\Colliders\CircleCollider.h" />
     <ClInclude Include="src\Engine\Collider.h" />
     <ClInclude Include="src\Engine\Component.h" />
+    <ClInclude Include="src\Engine\Components\Behavior.h" />
+    <ClInclude Include="src\Engine\Components\Behaviors\Evade.h" />
+    <ClInclude Include="src\Engine\Components\Behaviors\Flee.h" />
+    <ClInclude Include="src\Engine\Components\Behaviors\Persue.h" />
+    <ClInclude Include="src\Engine\Components\Behaviors\Seek.h" />
+    <ClInclude Include="src\Engine\Components\Behaviors\Wander.h" />
     <ClInclude Include="src\Engine\DynamicArray.h" />
     <ClInclude Include="src\Engine\Engine.h" />
-    <ClInclude Include="src\Engine\Components\FleeComponent.h" />
     <ClInclude Include="src\Engine\Components\Input.h" />
     <ClInclude Include="src\Engine\Scenes\SampleScene.h" />
     <ClInclude Include="src\Engine\Scene.h" />
-    <ClInclude Include="src\Engine\Components\SeekComponent.h" />
     <ClInclude Include="src\Engine\Components\SpriteComponent.h" />
     <ClInclude Include="src\Engine\Transform2D.h" />
   </ItemGroup>

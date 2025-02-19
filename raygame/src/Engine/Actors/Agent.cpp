@@ -1,8 +1,14 @@
 #include "Agent.h"
 #include "Transform2D.h"
-#include "SeekComponent.h"
-#include "FleeComponent.h"
+#include "Seek.h"
+#include "Flee.h"
+#include "Wander.h"
+#include "Persue.h"
+#include "Evade.h"
 #include "CircleCollider.h"
+#include "raylib.h"
+#include "raymath.h"
+
 Agent::Agent() : Actor::Actor()
 {
 }
@@ -21,17 +27,20 @@ void Agent::start()
 {
 	Actor::start();
 	m_maxSpeed = 100;
-	auto seek = AddComponent<SeekComponent>(new SeekComponent(this, m_target, m_maxSpeed));
-	auto flee = AddComponent<FleeComponent>(new FleeComponent(this, m_target, m_maxSpeed));
+	auto seek = AddComponent<Seek>(new Seek(this, m_target, m_maxSpeed, 1));
+	auto evade = AddComponent<Evade>(new Evade(this, m_target, m_maxSpeed, 1));
+	auto persue = AddComponent<Persue>(new Persue(this, m_target, m_maxSpeed, 1));
+	auto wander = AddComponent<Wander>(new Wander(this,m_maxSpeed));
+	auto flee = AddComponent<Flee>(new Flee(this, m_target, m_maxSpeed, 1));
 	flee->disable();
-	setCollider(new CircleCollider(15, this));
+	seek->disable();
+	wander->disable();
+	persue->disable();
 }
 
 void Agent::update(float deltaTime)
 {
 	Actor::update(deltaTime);
-
-
 }
 
 void Agent::end()
