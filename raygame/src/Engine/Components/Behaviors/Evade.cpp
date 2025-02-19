@@ -25,7 +25,7 @@ void Evade::update(float deltaTime)
 	{
 		if (m_owner && m_target)
 		{
-			m_owner->addForce(getSteeringForceAway(m_target->getVelocity()) * deltaTime);
+			m_owner->addForce(EvadeForce() * deltaTime);
 			m_owner->getTransform()->translate(m_owner->getVelocity() * deltaTime);
 			m_owner->getTransform()->setRotation(-atan2(m_owner->getVelocity().y, m_owner->getVelocity().x));
 		}

@@ -17,28 +17,12 @@ public:
 
 	void setTarget(Actor* target) { m_target = target; }
 	void setWeight(float weight);
-	/// <summary>
-	/// Get Steering force to the target
-	/// </summary>
-	/// <returns></returns>
-	MathLibrary::Vector2 getSteeringForceTo(MathLibrary::Vector2 otherVelocity = {0,0});
-	/// <summary>
-	/// Get Steering force from a point
-	/// </summary>
-	/// <param name="point"></param>
-	/// <returns></returns>
-	MathLibrary::Vector2 getForceToPoint(MathLibrary::Vector2 point);
-	/// <summary>
-	/// Get Steering force away from the target
-	/// </summary>
-	/// <returns></returns>
-	MathLibrary::Vector2 getSteeringForceAway(MathLibrary::Vector2 otherVelocity = {0,0});
-	/// <summary>
-	/// Get Steering force away from a point
-	/// </summary>
-	/// <param name="point"></param>
-	/// <returns></returns>
-	MathLibrary::Vector2 getForceAwayPoint(MathLibrary::Vector2 point);
+
+	MathLibrary::Vector2 SeekForce();
+	MathLibrary::Vector2 FleeForce();
+	MathLibrary::Vector2 PursueForce();
+	MathLibrary::Vector2 EvadeForce();
+	MathLibrary::Vector2 ArriveForce();
 
 protected:
 	float m_weight;

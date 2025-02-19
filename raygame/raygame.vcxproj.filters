@@ -71,6 +71,9 @@
     <ClCompile Include="src\Engine\Components\Behaviors\Evade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Components\Behaviors\Arrival.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Scene.h">
@@ -128,6 +131,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Components\Behaviors\Evade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Components\Behaviors\Arrival.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

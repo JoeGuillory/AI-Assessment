@@ -154,6 +154,7 @@
     <ClCompile Include="src\Engine\Collider.cpp" />
     <ClCompile Include="src\Engine\Component.cpp" />
     <ClCompile Include="src\Engine\Components\Behavior.cpp" />
+    <ClCompile Include="src\Engine\Components\Behaviors\Arrival.cpp" />
     <ClCompile Include="src\Engine\Components\Behaviors\Evade.cpp" />
     <ClCompile Include="src\Engine\Components\Behaviors\Flee.cpp" />
     <ClCompile Include="src\Engine\Components\Behaviors\Persue.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="src\Engine\Collider.h" />
     <ClInclude Include="src\Engine\Component.h" />
     <ClInclude Include="src\Engine\Components\Behavior.h" />
+    <ClInclude Include="src\Engine\Components\Behaviors\Arrival.h" />
     <ClInclude Include="src\Engine\Components\Behaviors\Evade.h" />
     <ClInclude Include="src\Engine\Components\Behaviors\Flee.h" />
     <ClInclude Include="src\Engine\Components\Behaviors\Persue.h" />

@@ -41,27 +41,33 @@ void Behavior::setWeight(float weight)
 
 }
 
-MathLibrary::Vector2 Behavior::getSteeringForceTo(MathLibrary::Vector2 otherVelocity)
+MathLibrary::Vector2 Behavior::SeekForce()
 {
-	MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition() + otherVelocity - m_owner->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
+	MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition() - m_owner->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
 	return desiredVelocity - m_owner->getVelocity();
 }
 
-MathLibrary::Vector2 Behavior::getForceToPoint(MathLibrary::Vector2 point)
+MathLibrary::Vector2 Behavior::FleeForce()
 {
-	MathLibrary::Vector2 desiredVelocity = (point - m_owner->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
+	MathLibrary::Vector2 desiredVelocity = (m_owner->getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
 	return desiredVelocity - m_owner->getVelocity();
 }
 
-MathLibrary::Vector2 Behavior::getSteeringForceAway(MathLibrary::Vector2 otherVelocity)
+MathLibrary::Vector2 Behavior::PursueForce()
 {
-	MathLibrary::Vector2 desiredVelocity = (m_owner->getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition() + otherVelocity).normalize() * m_maxSpeed;
+	MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition() + m_target->getVelocity() - m_owner->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
 	return desiredVelocity - m_owner->getVelocity();
 }
 
-MathLibrary::Vector2 Behavior::getForceAwayPoint(MathLibrary::Vector2 point)
+MathLibrary::Vector2 Behavior::EvadeForce()
 {
-	MathLibrary::Vector2 desiredVelocity = (m_owner->getTransform()->getWorldPosition() - point).normalize() * m_maxSpeed;
+	MathLibrary::Vector2 desiredVelocity = (m_owner->getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition()).normalize() + m_target->getVelocity() * m_maxSpeed;
 	return desiredVelocity - m_owner->getVelocity();
 }
+
+MathLibrary::Vector2 Behavior::ArriveForce()
+{
+	return MathLibrary::Vector2();
+}
+
 
