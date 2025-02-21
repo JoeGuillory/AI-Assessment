@@ -11,8 +11,8 @@ Wander::Wander(Actor* owner, float maxspeed)
 {
 	m_owner = owner;
 	m_maxSpeed = maxspeed;
-	m_unitScaler = 100;
-	m_distance = 20;
+	m_unitScaler = 30;
+	m_distance = 5;
 	m_enabled = true;
 }
 
@@ -28,7 +28,7 @@ void Wander::update(float deltaTime)
 {
 	if (m_enabled)
 	{
-		m_owner->addForce(getDestination() * deltaTime);
+		m_owner->addForce(SeekForcePoint(getDestination()) * deltaTime);
 		m_owner->getTransform()->translate(m_owner->getVelocity() * deltaTime);
 		m_owner->getTransform()->setRotation(-atan2(m_owner->getVelocity().y, m_owner->getVelocity().x));
 	}
@@ -46,8 +46,7 @@ MathLibrary::Vector2 Wander::getDestination()
 	std::uniform_int_distribution<> distrib(-10, 10);
 	float randX = distrib(gen);
 	float randY = distrib(gen);
-	MathLibrary::Vector2 randpoint = ((MathLibrary::Vector2(randX, randY).getNormalized() * m_unitScaler) + m_owner->getTransform()->getWorldPosition()) + (m_owner->getTransform()->getForward() * m_distance);
-	DrawCircle(randpoint.x, randpoint.y, m_unitScaler, WHITE);
-	return SeekForcePoint(randpoint);
+	MathLibrary::Vector2 randpoint = ((MathLibrary::Vector2(randX, randY).getNormalized() * m_unitScaler) + m_owner->getTransform()->getWorldPosition()) + m_owner->getTransform()->getForward() * m_distance;
+	return randpoint;
 }
 

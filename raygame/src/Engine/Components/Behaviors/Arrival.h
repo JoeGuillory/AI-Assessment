@@ -11,4 +11,8 @@ public:
 	void start();
 	void update(float deltaTime);
 	void end();
+
+	void setRadius(float radius) { m_radius = radius; }
+private:
+	float m_radius;
 };

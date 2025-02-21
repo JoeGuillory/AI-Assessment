@@ -46,10 +46,18 @@ void Actor::onCollision(Actor* other)
     }
 }
 
+void Actor::checkVelocity()
+{
+    if (m_velocity.x > m_maxVelocity.x)
+        m_velocity.x = m_maxVelocity.x;
+    if (m_velocity.y > m_maxVelocity.y)
+        m_velocity.y = m_maxVelocity.y;
+}
+
 void Actor::update(float deltaTime)
 {
     m_transform->updateTransforms();
-
+    checkVelocity();
     for (int i = 0; i < m_components.Length(); i++)
     {
         m_components[i]->update(deltaTime);

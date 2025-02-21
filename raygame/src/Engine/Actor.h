@@ -60,8 +60,9 @@ public:
 
 
     MathLibrary::Vector2 getVelocity() { return m_velocity; }
+    MathLibrary::Vector2 getMaxVelocity() { return m_maxVelocity; }
     void setVelocity(MathLibrary::Vector2 velocity) { m_velocity = velocity; }
-
+    void setMaxVelocity(MathLibrary::Vector2 max) { m_maxVelocity = max; }
     void addForce(MathLibrary::Vector2 force);
 
     /// <summary>
@@ -101,7 +102,8 @@ public:
     /// </summary>
     /// <param name="other">The actor this actor collided with.</param>
     virtual void onCollision(Actor* other);
-
+private:
+    void checkVelocity();
 protected:
     const char* m_name;
 
@@ -111,6 +113,7 @@ private:
     Collider* m_collider;
     DynamicArray<Component*> m_components;
     MathLibrary::Vector2 m_velocity;
+    MathLibrary::Vector2 m_maxVelocity;
 };
 
 template<typename T>

@@ -22,7 +22,7 @@ public:
 	MathLibrary::Vector2 FleeForce();
 	MathLibrary::Vector2 PursueForce();
 	MathLibrary::Vector2 EvadeForce();
-	MathLibrary::Vector2 ArriveForce();
+	MathLibrary::Vector2 ArriveForce(float radius);
 	MathLibrary::Vector2 SeekForcePoint(MathLibrary::Vector2 point);
 
 protected:

@@ -1,6 +1,7 @@
 #include "Behavior.h"
 #include "Actor.h"
 #include "Transform2D.h"
+#include <algorithm>
 
 Behavior::Behavior() : Component::Component()
 {
@@ -65,9 +66,12 @@ MathLibrary::Vector2 Behavior::EvadeForce()
 	return desiredVelocity - m_owner->getVelocity();
 }
 
-MathLibrary::Vector2 Behavior::ArriveForce()
+MathLibrary::Vector2 Behavior::ArriveForce(float radius)
 {
-	return MathLibrary::Vector2();
+	float distance = (m_target->getTransform()->getWorldPosition() - m_owner->getTransform()->getWorldPosition()).getMagnitude();
+
+	MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition() - m_owner->getTransform()->getWorldPosition()).normalize() * fmin((distance / radius),m_maxSpeed);
+	return desiredVelocity - m_owner->getVelocity();
 }
 
 MathLibrary::Vector2 Behavior::SeekForcePoint(MathLibrary::Vector2 point)
