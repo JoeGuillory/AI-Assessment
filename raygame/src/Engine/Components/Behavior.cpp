@@ -70,4 +70,10 @@ MathLibrary::Vector2 Behavior::ArriveForce()
 	return MathLibrary::Vector2();
 }
 
+MathLibrary::Vector2 Behavior::SeekForcePoint(MathLibrary::Vector2 point)
+{
+	MathLibrary::Vector2 desiredVelocity = point - m_owner->getTransform()->getWorldPosition().normalize() * m_maxSpeed;
+	return desiredVelocity - m_owner->getVelocity();
+}
+
 

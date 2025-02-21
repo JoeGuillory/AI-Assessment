@@ -47,6 +47,7 @@ MathLibrary::Vector2 Wander::getDestination()
 	float randX = distrib(gen);
 	float randY = distrib(gen);
 	MathLibrary::Vector2 randpoint = ((MathLibrary::Vector2(randX, randY).getNormalized() * m_unitScaler) + m_owner->getTransform()->getWorldPosition()) + (m_owner->getTransform()->getForward() * m_distance);
-	return getSteeringForceTo(randpoint);
+	DrawCircle(randpoint.x, randpoint.y, m_unitScaler, WHITE);
+	return SeekForcePoint(randpoint);
 }
 

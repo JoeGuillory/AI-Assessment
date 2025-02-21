@@ -34,8 +34,8 @@ void Agent::start()
 	auto flee = AddComponent<Flee>(new Flee(this, m_target, m_maxSpeed, 1));
 	flee->disable();
 	seek->disable();
-	wander->disable();
 	persue->disable();
+	evade->disable();
 }
 
 void Agent::update(float deltaTime)
