@@ -24,7 +24,7 @@ void Persue::update(float deltaTime)
 	{
 		if (m_owner && m_target)
 		{
-			m_owner->addForce(PursueForce() * deltaTime);
+			m_owner->addForce(PursueForce() * m_weight * deltaTime);
 			m_owner->getTransform()->translate(m_owner->getVelocity() * deltaTime);
 			m_owner->getTransform()->setRotation(-atan2(m_owner->getVelocity().y, m_owner->getVelocity().x));
 		}

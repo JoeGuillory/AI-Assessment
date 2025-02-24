@@ -13,6 +13,7 @@ public:
 	void end();
 
 	void setRadius(float radius) { m_radius = radius; }
+	float getRadius() { return m_radius; }
 private:
 	float m_radius;
 };

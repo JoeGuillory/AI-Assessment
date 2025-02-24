@@ -6,7 +6,7 @@ class Wander : public Behavior
 public:
 
 	Wander();
-	Wander(Actor* owner, float maxspeed);
+	Wander(Actor* owner, float maxspeed, float weight);
 	~Wander();
 
 	void start();
