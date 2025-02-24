@@ -44,7 +44,7 @@ void Agent::start()
 	flee = AddComponent<Flee>(new Flee(this, m_target, m_maxSpeed, 1));
 	arrive = AddComponent<Arrival>(new Arrival(this, m_target, m_maxSpeed, 1));
 	m_state = STATE_SEEK;
-	arrive->setRadius(90);
+	arrive->setRadius(225);
 	persue->disable();
 	evade->disable();
 	wander->disable();

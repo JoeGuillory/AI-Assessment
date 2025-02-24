@@ -24,6 +24,7 @@ void Input::start()
 
 void Input::update(float deltaTime)
 {
+	m_owner->setVelocity({ 0,0 });
 	if (IsKeyDown(KEY_W))
 	{
 		m_owner->setVelocity(getOwner()->getTransform()->getForward() * m_speed);
