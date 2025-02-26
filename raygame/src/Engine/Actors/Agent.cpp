@@ -40,6 +40,8 @@ void Agent::start()
 	auto evade = AddComponent<Evade>(new Evade(this, m_target, m_maxSpeed, 1));
 	auto persue = AddComponent<Persue>(new Persue(this, m_target, m_maxSpeed, 1));
 	auto wander = AddComponent<Wander>(new Wander(this,m_maxSpeed,1));
+	wander->setScaler(100);
+	wander->setDistance(5);
 	seek = AddComponent<Seek>(new Seek(this, m_target, m_maxSpeed, 1));
 	flee = AddComponent<Flee>(new Flee(this, m_target, m_maxSpeed, 1));
 	arrive = AddComponent<Arrival>(new Arrival(this, m_target, m_maxSpeed, 1));
@@ -47,7 +49,7 @@ void Agent::start()
 	arrive->setRadius(225);
 	persue->disable();
 	evade->disable();
-	wander->disable();
+	wander->setWeight(0);
 	seek->setWeight(1);
 	flee->setWeight(0);
 	arrive->setWeight(0);

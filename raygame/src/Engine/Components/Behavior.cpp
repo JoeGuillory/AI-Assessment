@@ -42,42 +42,12 @@ void Behavior::setWeight(float weight)
 
 }
 
-MathLibrary::Vector2 Behavior::SeekForce()
+MathLibrary::Vector2 Behavior::SteeringForce(MathLibrary::Vector2 lhs, MathLibrary::Vector2 rhs, float maxSpeed)
 {
-	MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition() - m_owner->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
+	MathLibrary::Vector2 desiredVelocity = (lhs - rhs).getNormalized() * maxSpeed;
 	return desiredVelocity - m_owner->getVelocity();
 }
 
-MathLibrary::Vector2 Behavior::FleeForce()
-{
-	MathLibrary::Vector2 desiredVelocity = (m_owner->getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
-	return desiredVelocity - m_owner->getVelocity();
-}
 
-MathLibrary::Vector2 Behavior::PursueForce()
-{
-	MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition() + m_target->getVelocity() - m_owner->getTransform()->getWorldPosition()).normalize() * m_maxSpeed;
-	return desiredVelocity - m_owner->getVelocity();
-}
-
-MathLibrary::Vector2 Behavior::EvadeForce()
-{
-	MathLibrary::Vector2 desiredVelocity = (m_owner->getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition()).normalize() + m_target->getVelocity() * m_maxSpeed;
-	return desiredVelocity - m_owner->getVelocity();
-}
-
-MathLibrary::Vector2 Behavior::ArriveForce(float radius)
-{
-	float distance = (m_target->getTransform()->getWorldPosition() - m_owner->getTransform()->getWorldPosition()).getMagnitude();
-
-	MathLibrary::Vector2 desiredVelocity = (m_target->getTransform()->getWorldPosition() - m_owner->getTransform()->getWorldPosition()).normalize() * fmin((distance / radius),m_maxSpeed);
-	return desiredVelocity - m_owner->getVelocity();
-}
-
-MathLibrary::Vector2 Behavior::SeekForcePoint(MathLibrary::Vector2 point)
-{
-	MathLibrary::Vector2 desiredVelocity = point - m_owner->getTransform()->getWorldPosition().normalize() * m_maxSpeed;
-	return desiredVelocity - m_owner->getVelocity();
-}
 
 

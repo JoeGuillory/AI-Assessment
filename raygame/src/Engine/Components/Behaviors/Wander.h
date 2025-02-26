@@ -13,6 +13,7 @@ public:
 	void update(float deltaTime);
 	void end();
 	void setDistance(float distance) { m_distance = distance; }
+	void setScaler(float scale) { m_unitScaler = scale; }
 	/// <summary>
 	/// Returns a Steering force of the next Random position
 	/// </summary>

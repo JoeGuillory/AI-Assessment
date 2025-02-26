@@ -24,7 +24,9 @@ void Arrival::update(float deltaTime)
 	{
 		if (m_owner && m_target)
 		{
-			m_owner->addForce(ArriveForce(m_radius) * m_weight * deltaTime);
+			float distance = (m_target->getTransform()->getWorldPosition() - m_owner->getTransform()->getWorldPosition()).getMagnitude();
+
+			m_owner->addForce(SteeringForce(m_target->getTransform()->getWorldPosition(),m_owner->getTransform()->getWorldPosition(),fmin((distance / m_radius), m_maxSpeed)) * m_weight * deltaTime);
 			m_owner->getTransform()->translate(m_owner->getVelocity() * deltaTime);
 			m_owner->getTransform()->setRotation(-atan2(m_owner->getVelocity().y, m_owner->getVelocity().x));
 		}

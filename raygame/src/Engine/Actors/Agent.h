@@ -26,4 +26,5 @@ private:
 	Seek* seek;
 	Flee* flee;
 	Arrival* arrive;
+	
 };

@@ -17,14 +17,8 @@ public:
 
 	void setTarget(Actor* target) { m_target = target; }
 	void setWeight(float weight);
-
-	MathLibrary::Vector2 SeekForce();
-	MathLibrary::Vector2 FleeForce();
-	MathLibrary::Vector2 PursueForce();
-	MathLibrary::Vector2 EvadeForce();
-	MathLibrary::Vector2 ArriveForce(float radius);
-	MathLibrary::Vector2 SeekForcePoint(MathLibrary::Vector2 point);
-
+	MathLibrary::Vector2 SteeringForce(MathLibrary::Vector2 lhs, MathLibrary::Vector2 rhs, float maxSpeed);
+	
 protected:
 	float m_weight;
 	Actor* m_target;
