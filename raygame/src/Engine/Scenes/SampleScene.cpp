@@ -4,9 +4,11 @@
 #include "Input.h"
 #include "Agent.h"
 #include "CircleCollider.h"
+#include "PathFinding.h"
+
 void SampleScene::start()
 {
-	//This is a better comment
+	/*
 	Actor* test = new Actor(50, 50, "Test");
 	test->setCollider(new CircleCollider(20, test));
 	Agent* agenttest = new Agent();
@@ -20,5 +22,23 @@ void SampleScene::start()
 	test->getTransform()->setScale({ 50, 50 });
 	test->AddComponent(new Input(test));
 	addActor(test);
-	addActor(agenttest);
+	addActor(agenttest);*/
+}
+
+void SampleScene::update(float deltaTime)
+{
+	Pathfinding::Node a(500,500);
+	Pathfinding::Node b(600,400);
+	Pathfinding::Node c(600,600);
+
+	a.ConnectTo(&b, 1);
+	a.ConnectTo(&c, 4);
+
+	/*List<Pathfinding::Node*> path = { &a,&b,&c };
+
+	Pathfinding::DrawPath(path, RED);
+	Pathfinding::DrawNode(&a);*/
+	List<Pathfinding::Node*> list;
+	Pathfinding::DrawGraph(&a, &list);
+
 }

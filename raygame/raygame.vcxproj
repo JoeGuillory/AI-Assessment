@@ -80,7 +80,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -96,7 +96,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -114,7 +114,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -134,7 +134,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -163,6 +163,8 @@
     <ClCompile Include="src\Engine\Engine.cpp" />
     <ClCompile Include="src\Engine\Components\Input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Engine\PathFinding\NodeMap.cpp" />
+    <ClCompile Include="src\Engine\PathFinding\PathFinding.cpp" />
     <ClCompile Include="src\Engine\Scenes\SampleScene.cpp" />
     <ClCompile Include="src\Engine\Scene.cpp" />
     <ClCompile Include="src\Engine\Components\SpriteComponent.cpp" />
@@ -185,6 +187,11 @@
     <ClInclude Include="src\Engine\DynamicArray.h" />
     <ClInclude Include="src\Engine\Engine.h" />
     <ClInclude Include="src\Engine\Components\Input.h" />
+    <ClInclude Include="src\Engine\List\Iterator.h" />
+    <ClInclude Include="src\Engine\List\List.h" />
+    <ClInclude Include="src\Engine\List\Node.h" />
+    <ClInclude Include="src\Engine\PathFinding\NodeMap.h" />
+    <ClInclude Include="src\Engine\PathFinding\PathFinding.h" />
     <ClInclude Include="src\Engine\Scenes\SampleScene.h" />
     <ClInclude Include="src\Engine\Scene.h" />
     <ClInclude Include="src\Engine\Components\SpriteComponent.h" />
