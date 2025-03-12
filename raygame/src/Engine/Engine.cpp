@@ -2,7 +2,7 @@
 #include "raylib.h"
 #include "Transform2D.h"
 #include "SampleScene.h"
-
+#include "DemoScene.h"
 
 bool Engine::m_applicationShouldClose = false;
 DynamicArray<Scene*> Engine::m_scenes;
@@ -22,13 +22,15 @@ Engine::Engine()
 void Engine::start()
 {
 	//Initialize window
-	int screenWidth = 700;
+	int screenWidth = 1600;
 	int screenHeight = 800;
 	InitWindow(screenWidth, screenHeight, "Intro To C++");
 	SetTargetFPS(0);
 
 	//Start the scene
-	m_currentSceneIndex = addScene(new SampleScene());
+	m_currentSceneIndex = addScene(new DemoScene());
+	addScene(new SampleScene());
+
 	m_scenes[m_currentSceneIndex]->start();
 }
 

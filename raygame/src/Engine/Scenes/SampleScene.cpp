@@ -5,40 +5,50 @@
 #include "Agent.h"
 #include "CircleCollider.h"
 #include "PathFinding.h"
+#include "PathAgent.h"
 
 void SampleScene::start()
 {
-	/*
-	Actor* test = new Actor(50, 50, "Test");
-	test->setCollider(new CircleCollider(20, test));
-	Agent* agenttest = new Agent();
-	agenttest->AddComponent(new SpriteComponent(agenttest, "Images/enemy.png"));
-	agenttest->getTransform()->setScale({ 50, 50 });
-	agenttest->getTransform()->setLocalPosition({ 300,400 });
-	agenttest->setTarget(test);
-	SpriteComponent* sprite = nullptr;
-	test->AddComponent(new SpriteComponent(test, "Images/player.png"));
-	sprite = test->GetComponent(sprite);
-	test->getTransform()->setScale({ 50, 50 });
-	test->AddComponent(new Input(test));
-	addActor(test);
-	addActor(agenttest);*/
+	m_nodeMap.cellSize = 32;
+	std::vector<std::string> asciiMap;
+	asciiMap.push_back("000000000000");
+	asciiMap.push_back("011111111110");
+	asciiMap.push_back("011111100000");
+	asciiMap.push_back("011111111110");
+	asciiMap.push_back("000000111110");
+	asciiMap.push_back("011111111110");
+	asciiMap.push_back("011111111110");
+	asciiMap.push_back("000000000000");
+	m_nodeMap.Initialise(asciiMap);
+
+	m_pathAgent = new PathAgent();
+	addActor(m_pathAgent);
+	m_pathAgent->SetNode(m_nodeMap.GetNode(1,1));
+	m_pathAgent->speed = 64;
+
 }
 
 void SampleScene::update(float deltaTime)
 {
-	Pathfinding::Node a(500,500);
-	Pathfinding::Node b(600,400);
-	Pathfinding::Node c(600,600);
+	Scene::update(deltaTime);
 
-	a.ConnectTo(&b, 1);
-	a.ConnectTo(&c, 4);
+	bool drawNodeMap = true;
+	Color lineColor = { 255, 255, 255, 255 };
 
-	/*List<Pathfinding::Node*> path = { &a,&b,&c };
+	m_nodeMap.Draw(true);
+	Pathfinding::DrawPath(m_pathAgent->path, lineColor);
 
-	Pathfinding::DrawPath(path, RED);
-	Pathfinding::DrawNode(&a);*/
-	List<Pathfinding::Node*> list;
-	Pathfinding::DrawGraph(&a, &list);
+	if (IsMouseButtonPressed(0))
+	{
+		Vector2 mousePos = GetMousePosition();
+		Pathfinding::Node* end = m_nodeMap.GetClosestNode(mousePos);
+		m_pathAgent->SetSearchType(2);
+		m_pathAgent->GoToNode(end);
+	}
+	
+}
 
+void SampleScene::end()
+{
+	delete m_pathAgent;
 }

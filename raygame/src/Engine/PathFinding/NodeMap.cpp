@@ -1,25 +1,23 @@
-#include "NodeMap.h"
 #include <iostream>
-
-
+#include "NodeMap.h"
+#include "raylib.h"
 
 namespace Pathfinding
 {
-	void NodeMap::Initialise(List<std::string> asciiMap)
+	void NodeMap::Initialise(std::vector<std::string> asciiMap)
 	{
 		const char emptySquare = '0';
 
 		// assume all strings are the same length, so we'll size the map according to the number of strings and the length of the first one
-		height = asciiMap.getLength();
-		width = asciiMap.first().size();
+		height = asciiMap.size();
+		width = asciiMap[0].size();
 
 		nodes = new Node * [width * height];
 
 		// loop over the strings, creating Node entries as we go
-		auto mapIter = asciiMap.begin();
-		for (int y = 0; y < height; y++,mapIter++)
+		for (int y = 0; y < height; y++)
 		{
-			std::string line = (*mapIter);
+			std::string& line = asciiMap[y];
 			// report to the use that you have a mis-matched string length
 			if (line.size() != width)
 				std::cout << "Mismatched line #" << y << " in ASCII map (" << line.size() << " instead of " << width << ")" << std::endl;
@@ -31,7 +29,7 @@ namespace Pathfinding
 
 				// create a node for anything but a '.' character
 				// position it in the middle of the cell, hence the +0.5f's
-				nodes[x + width * y] = tile == emptySquare ? nullptr : new Node((x + 0.5f) * cellSize, (y + 0.5f) * cellSize);
+				nodes[x + width * y] = tile == emptySquare ? nullptr : new Node((x+0.5f) * cellSize, (y+0.5f) * cellSize);
 			}
 		}
 
@@ -48,17 +46,18 @@ namespace Pathfinding
 					Node* nodeWest = x == 0 ? nullptr : GetNode(x - 1, y);
 					if (nodeWest)
 					{
-						node->ConnectTo(nodeWest, 1); // TODO weights
-						nodeWest->ConnectTo(node, 1);
+						node->ConnectTo(nodeWest, 20); // TODO weights
+						nodeWest->ConnectTo(node, 20);
 					}
 
 					// see if there's a node south of us, checking for array index overruns again
 					Node* nodeSouth = y == 0 ? nullptr : GetNode(x, y - 1);
 					if (nodeSouth)
 					{
-						node->ConnectTo(nodeSouth, 1);
-						nodeSouth->ConnectTo(node, 1);
+						node->ConnectTo(nodeSouth, 20);
+						nodeSouth->ConnectTo(node, 20);
 					}
+
 				}
 			}
 		}
@@ -93,9 +92,9 @@ namespace Pathfinding
 				else
 				{
 					// draw the connections between the node and its neighbours
-					for (auto iter = node->connections.begin(); iter == node->connections.end(); iter++)
+					for (int i = 0; i < node->connections.size(); i++)
 					{
-						Node* other = (*iter).target;
+						Node* other = node->connections[i].target;
 						DrawLine(node->position.x, node->position.y, other->position.x, other->position.y, lineColor);
 					}
 				}

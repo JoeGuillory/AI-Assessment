@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\Actors\PathAgent.cpp" />
     <ClCompile Include="src\Engine\Colliders\AABBCollider.cpp" />
     <ClCompile Include="src\Engine\Actor.cpp" />
     <ClCompile Include="src\Engine\Actors\Agent.cpp" />
@@ -165,12 +166,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Engine\PathFinding\NodeMap.cpp" />
     <ClCompile Include="src\Engine\PathFinding\PathFinding.cpp" />
+    <ClCompile Include="src\Engine\Scenes\DemoScene.cpp" />
     <ClCompile Include="src\Engine\Scenes\SampleScene.cpp" />
     <ClCompile Include="src\Engine\Scene.cpp" />
     <ClCompile Include="src\Engine\Components\SpriteComponent.cpp" />
     <ClCompile Include="src\Engine\Transform2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\Actors\PathAgent.h" />
     <ClInclude Include="src\Engine\Colliders\AABBCollider.h" />
     <ClInclude Include="src\Engine\Actor.h" />
     <ClInclude Include="src\Engine\Actors\Agent.h" />
@@ -192,6 +195,7 @@
     <ClInclude Include="src\Engine\List\Node.h" />
     <ClInclude Include="src\Engine\PathFinding\NodeMap.h" />
     <ClInclude Include="src\Engine\PathFinding\PathFinding.h" />
+    <ClInclude Include="src\Engine\Scenes\DemoScene.h" />
     <ClInclude Include="src\Engine\Scenes\SampleScene.h" />
     <ClInclude Include="src\Engine\Scene.h" />
     <ClInclude Include="src\Engine\Components\SpriteComponent.h" />
