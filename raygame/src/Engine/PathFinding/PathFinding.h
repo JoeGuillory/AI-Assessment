@@ -17,12 +17,14 @@ namespace Pathfinding
 
 	struct Node
 	{
-		Node() : position(Vector2()), gScore(0), previous(nullptr), connections(List<Edge>()) {}
-		Node(float x, float y) : position({x,y}), gScore(0), previous(nullptr), connections(List<Edge>()) {}
+		Node() : position(Vector2()), gScore(0), hScore(0),fScore(0), previous(nullptr), connections(List<Edge>()) {}
+		Node(float x, float y) : position({x,y}), gScore(0), hScore(0), fScore(0), previous(nullptr), connections(List<Edge>()) {}
 
 		Vector2 position;
 
 		float gScore;
+		float hScore;
+		float fScore;
 		Node* previous;
 
 		List<Edge> connections;
@@ -31,6 +33,8 @@ namespace Pathfinding
 	};
 
 	List<Node*> DijkstrasSearch(Node* startNode, Node* endNode);
+	List<Node*> AStar(Node* startNode, Node* endNode);
+	float Heuristic(Node* target, Node* endNode);
 	void DrawPath(List<Node*>& path, Color lineColor);
 	void DrawNode(Node* node, bool selected = false);
 	void DrawGraph(Node* node, List<Node*>* drawnList);
