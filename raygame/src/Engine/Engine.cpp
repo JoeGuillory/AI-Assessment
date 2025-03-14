@@ -3,6 +3,7 @@
 #include "Transform2D.h"
 #include "SampleScene.h"
 #include "DemoScene.h"
+#include "BehaviorDemo.h"
 
 bool Engine::m_applicationShouldClose = false;
 DynamicArray<Scene*> Engine::m_scenes;
@@ -28,9 +29,9 @@ void Engine::start()
 	SetTargetFPS(0);
 
 	//Start the scene
-	m_currentSceneIndex = addScene(new DemoScene());
+	addScene(new DemoScene());
 	addScene(new SampleScene());
-
+	m_currentSceneIndex = addScene(new BehaviorDemo());
 	m_scenes[m_currentSceneIndex]->start();
 }
 

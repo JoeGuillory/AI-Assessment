@@ -65,6 +65,7 @@ public:
     void setMaxVelocity(MathLibrary::Vector2 max) { m_maxVelocity = max; }
     void addForce(MathLibrary::Vector2 force);
 
+
     /// <summary>
     /// Called during the first update after an actor is added to a scene.
     /// </summary>

@@ -10,6 +10,7 @@ public:
 	void start();
 	void update(float deltaTime);
 	void end();
+	void WrapPosition();
 private:
 	float m_speed;
 	float m_rotatespeed;

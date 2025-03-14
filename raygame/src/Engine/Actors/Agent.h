@@ -18,6 +18,7 @@ public:
 	void end();
 	void setTarget(Actor* actor) { m_target = actor; }
 	void CheckState();
+	void WrapPosition();
 
 private:
 	Actor* m_target;

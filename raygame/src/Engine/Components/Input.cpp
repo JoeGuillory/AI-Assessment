@@ -46,8 +46,43 @@ void Input::update(float deltaTime)
 	{
 		getOwner()->getTransform()->rotate(-m_rotatespeed * deltaTime);
 	}
+	WrapPosition();
 }
 
 void Input::end()
 {
+}
+
+void Input::WrapPosition()
+{
+	float xpos = getOwner()->getTransform()->getWorldPosition().x;
+	float ypos = getOwner()->getTransform()->getWorldPosition().y;
+
+
+	if (xpos < 0)
+	{
+		getOwner()->getTransform()->setLocalPosition({ (float)GetScreenWidth(),ypos });
+	}
+
+	if (xpos > GetScreenWidth())
+	{
+		getOwner()->getTransform()->setLocalPosition({ 0,ypos });
+	}
+
+	if (ypos < 0)
+	{
+		getOwner()->getTransform()->setLocalPosition({ xpos,(float)GetScreenHeight() });
+	}
+
+	if (ypos > GetScreenHeight())
+	{
+		getOwner()->getTransform()->setLocalPosition({ xpos, 0 });
+	}
+
+
+
+
+
+
+
 }

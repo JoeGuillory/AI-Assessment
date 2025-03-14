@@ -9,6 +9,7 @@
 #include "CircleCollider.h"
 #include "raylib.h"
 #include "raymath.h"
+#include "SpriteComponent.h"
 
 enum AIState
 {
@@ -36,7 +37,9 @@ void Agent::start()
 {
 	Actor::start();
 	m_maxSpeed = 200;
+	getTransform()->setLocalPosition({ 100,100 });
 	setMaxVelocity({ m_maxSpeed,m_maxSpeed });
+	AddComponent<SpriteComponent>(new SpriteComponent(this, "Images/enemy.png"));
 	auto evade = AddComponent<Evade>(new Evade(this, m_target, m_maxSpeed, 1));
 	auto persue = AddComponent<Persue>(new Persue(this, m_target, m_maxSpeed, 1));
 	auto wander = AddComponent<Wander>(new Wander(this,m_maxSpeed,1));
@@ -59,6 +62,7 @@ void Agent::update(float deltaTime)
 {
 	Actor::update(deltaTime);
 	CheckState();
+	WrapPosition();
 }
 
 void Agent::end()
@@ -107,4 +111,32 @@ void Agent::CheckState()
 	default:
 		break;
 	}
+}
+
+void Agent::WrapPosition()
+{
+	float xpos = getTransform()->getWorldPosition().x;
+	float ypos = getTransform()->getWorldPosition().y;
+
+
+	if (xpos < 0)
+	{
+		getTransform()->setLocalPosition({ (float)GetScreenWidth(),ypos });
+	}
+
+	if (xpos > GetScreenWidth())
+	{
+		getTransform()->setLocalPosition({ 0,ypos });
+	}
+
+	if (ypos < 0)
+	{
+		getTransform()->setLocalPosition({xpos,(float)GetScreenHeight()});
+	}
+
+	if (ypos > GetScreenHeight())
+	{
+		getTransform()->setLocalPosition({xpos, 0});
+	}
+
 }

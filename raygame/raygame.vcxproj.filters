@@ -86,6 +86,9 @@
     <ClCompile Include="src\Engine\Scenes\DemoScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Scenes\BehaviorDemo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Scene.h">
@@ -167,6 +170,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Scenes\DemoScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Scenes\BehaviorDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
