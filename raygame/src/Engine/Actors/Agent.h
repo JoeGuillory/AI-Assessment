@@ -5,6 +5,7 @@ class Seek;
 class Flee;
 class Arrival;
 class Behavior;
+class BehaviourTree;
 
 class Agent : public Actor
 {
@@ -19,7 +20,12 @@ public:
 	void setTarget(Actor* actor) { m_target = actor; }
 	void CheckState();
 	void WrapPosition();
+	float GetMaxSpeed() { return m_maxSpeed; }
+	void SetAttack(bool state) { m_bAtack = state; }
 
+protected:
+	BehaviourTree* m_behaviourTree;
+	bool m_bAtack;
 private:
 	Actor* m_target;
 	float m_maxSpeed;

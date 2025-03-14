@@ -80,7 +80,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\BehaviourTree;$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -96,7 +96,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\BehaviourTree;$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -114,7 +114,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\BehaviourTree;$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -134,7 +134,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\Engine\BehaviourTree;$(ProjectDir)src\Engine\PathFinding;$(ProjectDir)src\Engine\List;$(ProjectDir)src\Engine\Components\Behaviors;$(ProjectDir)src\Engine\Actors;$(ProjectDir)src\Engine\Colliders;$(ProjectDir)src\Engine\Components;$(ProjectDir)src\Engine\Scenes;$(ProjectDir)src\Engine;$(ProjectDir)src;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -148,6 +148,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Actors\PathAgent.cpp" />
+    <ClCompile Include="src\Engine\BehaviourTree\BehaviourTree.cpp" />
+    <ClCompile Include="src\Engine\BehaviourTree\Composite.cpp" />
+    <ClCompile Include="src\Engine\BehaviourTree\Selector.cpp" />
+    <ClCompile Include="src\Engine\BehaviourTree\Sequence.cpp" />
     <ClCompile Include="src\Engine\Colliders\AABBCollider.cpp" />
     <ClCompile Include="src\Engine\Actor.cpp" />
     <ClCompile Include="src\Engine\Actors\Agent.cpp" />
@@ -175,6 +179,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Actors\PathAgent.h" />
+    <ClInclude Include="src\Engine\BehaviourTree\Behaviours.h" />
+    <ClInclude Include="src\Engine\BehaviourTree\BehaviourTree.h" />
+    <ClInclude Include="src\Engine\BehaviourTree\Composite.h" />
+    <ClInclude Include="src\Engine\BehaviourTree\Selector.h" />
+    <ClInclude Include="src\Engine\BehaviourTree\Sequence.h" />
     <ClInclude Include="src\Engine\Colliders\AABBCollider.h" />
     <ClInclude Include="src\Engine\Actor.h" />
     <ClInclude Include="src\Engine\Actors\Agent.h" />

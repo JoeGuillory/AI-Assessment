@@ -10,7 +10,8 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "SpriteComponent.h"
-
+#include "BehaviourTree.h"
+#include "Behaviours.h"
 enum AIState
 {
 	STATE_SEEK = 0,
@@ -31,15 +32,30 @@ Agent::Agent(Actor* target) : Actor::Actor()
 
 Agent::~Agent()
 {
+	if (m_behaviourTree != nullptr)
+		delete m_behaviourTree;
 }
 
 void Agent::start()
 {
 	Actor::start();
-	m_maxSpeed = 200;
-	getTransform()->setLocalPosition({ 100,100 });
-	setMaxVelocity({ m_maxSpeed,m_maxSpeed });
+	m_bAtack = false;
+	m_maxSpeed = 100;
 	AddComponent<SpriteComponent>(new SpriteComponent(this, "Images/enemy.png"));
+
+	m_behaviourTree =
+		(new Selector())->add(
+			(new Sequence())->add(
+				new MouseCloseCondition())->add(
+				new AttackAction()))->add(
+			(new Sequence())->add(
+				new StopAttackAction())->add(
+				new SeekAction()));
+	m_maxSpeed = 200;
+	setMaxVelocity({ m_maxSpeed,m_maxSpeed });
+	getTransform()->setLocalPosition({ 100,100 });
+
+	/*Actor::start();
 	auto evade = AddComponent<Evade>(new Evade(this, m_target, m_maxSpeed, 1));
 	auto persue = AddComponent<Persue>(new Persue(this, m_target, m_maxSpeed, 1));
 	auto wander = AddComponent<Wander>(new Wander(this,m_maxSpeed,1));
@@ -55,13 +71,17 @@ void Agent::start()
 	wander->setWeight(0);
 	seek->setWeight(1);
 	flee->setWeight(0);
-	arrive->setWeight(0);
+	arrive->setWeight(0);*/
 }
 
 void Agent::update(float deltaTime)
 {
 	Actor::update(deltaTime);
-	CheckState();
+	if(m_behaviourTree != nullptr)
+		m_behaviourTree->tick(this, deltaTime);
+
+	//Upate the behaviorTree Tick
+	//CheckState();
 	WrapPosition();
 }
 

@@ -16,7 +16,7 @@ void BehaviorDemo::start()
 	enemy->getTransform()->setScale({ 50,50 });
 
 
-	addActor(test);
+	//addActor(test);
 	addActor(enemy);
 }
 

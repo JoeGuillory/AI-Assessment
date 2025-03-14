@@ -1,5 +1,5 @@
 #include "PathAgent.h"
-
+#include <chrono>
 PathAgent::PathAgent() : Actor::Actor()
 {
 }
@@ -75,20 +75,29 @@ void PathAgent::update(float deltaTime)
 
 void PathAgent::GoToNode(Pathfinding::Node* node)
 {
+ 
     switch (searchType)
     {
     case 1:
+        
         path = DijkstrasSearch(currentNode, node);
+        
         currentIndex = 0;
         break;
     case 2:
+        
         path = AStar(currentNode, node);
+       
         currentIndex = 0;
         break;
     default:
         path = DijkstrasSearch(currentNode, node);
         currentIndex = 0;
     }
+    
+    // auto begin and last std::chrono::high_resolution_clock::now()
+   // auto duration = last - start;
+    //auto durationAsValue = std::chrono::duration<std::chrono::nanoseconds>(duration).count();
 }
 
 void PathAgent::end()
