@@ -20,7 +20,6 @@ public:
 	void setTarget(Actor* actor) { m_target = actor; }
 	void CheckState();
 	void WrapPosition();
-	float GetMaxSpeed() { return m_maxSpeed; }
 	void SetAttack(bool state) { m_bAtack = state; }
 
 protected:
@@ -28,7 +27,6 @@ protected:
 	bool m_bAtack;
 private:
 	Actor* m_target;
-	float m_maxSpeed;
 	int m_state;
 	Seek* seek;
 	Flee* flee;

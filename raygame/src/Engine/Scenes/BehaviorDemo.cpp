@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "SpriteComponent.h"
 #include "Transform2D.h"
+#include "raylib.h"
 void BehaviorDemo::start()
 {
 	Scene::start();
@@ -23,7 +24,6 @@ void BehaviorDemo::start()
 void BehaviorDemo::update(float deltaTime)
 {
 	Scene::update(deltaTime);
-
 }
 
 void BehaviorDemo::end()

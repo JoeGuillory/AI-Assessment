@@ -12,6 +12,7 @@
 #include "SpriteComponent.h"
 #include "BehaviourTree.h"
 #include "Behaviours.h"
+#include <string>
 enum AIState
 {
 	STATE_SEEK = 0,
@@ -40,7 +41,7 @@ void Agent::start()
 {
 	Actor::start();
 	m_bAtack = false;
-	m_maxSpeed = 100;
+	setMaxSpeed(400);
 	AddComponent<SpriteComponent>(new SpriteComponent(this, "Images/enemy.png"));
 
 	m_behaviourTree =
@@ -51,11 +52,9 @@ void Agent::start()
 			(new Sequence())->add(
 				new StopAttackAction())->add(
 				new SeekAction()));
-	m_maxSpeed = 200;
-	setMaxVelocity({ m_maxSpeed,m_maxSpeed });
 	getTransform()->setLocalPosition({ 100,100 });
 
-	/*Actor::start();
+	/*
 	auto evade = AddComponent<Evade>(new Evade(this, m_target, m_maxSpeed, 1));
 	auto persue = AddComponent<Persue>(new Persue(this, m_target, m_maxSpeed, 1));
 	auto wander = AddComponent<Wander>(new Wander(this,m_maxSpeed,1));
@@ -79,8 +78,13 @@ void Agent::update(float deltaTime)
 	Actor::update(deltaTime);
 	if(m_behaviourTree != nullptr)
 		m_behaviourTree->tick(this, deltaTime);
-
-	//Upate the behaviorTree Tick
+	getTransform()->translate(getVelocity() * deltaTime);
+	
+	DrawText(std::to_string(getVelocity().x).c_str(),60,60,10,WHITE);
+	DrawText(std::to_string(getVelocity().y).c_str(),60,80,10,WHITE);
+	DrawText(std::to_string(GetMousePosition().x).c_str(),120,60,10,WHITE);
+	DrawText(std::to_string(GetMousePosition().y).c_str(),120,80,10,WHITE);
+	
 	//CheckState();
 	WrapPosition();
 }

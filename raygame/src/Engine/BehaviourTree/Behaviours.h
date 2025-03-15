@@ -47,7 +47,8 @@ class SeekAction : public BehaviourTree
 		MathLibrary::Vector2 direction = mouse - agent->getTransform()->getWorldPosition();
 
 		// acceleration = direction normal * max speed * dt
-		agent->addForce(direction.getNormalized() * agent->GetMaxSpeed() * deltaTime);
+		agent->addForce(direction.getNormalized() * agent->getMaxSpeed() * deltaTime);
+		
 
 		return BH_SUCCESS;
 	}

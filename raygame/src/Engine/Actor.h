@@ -60,9 +60,9 @@ public:
 
 
     MathLibrary::Vector2 getVelocity() { return m_velocity; }
-    MathLibrary::Vector2 getMaxVelocity() { return m_maxVelocity; }
+    float getMaxSpeed() { return m_maxSpeed; }
+    void setMaxSpeed(float speed) { m_maxSpeed = speed; }
     void setVelocity(MathLibrary::Vector2 velocity) { m_velocity = velocity; }
-    void setMaxVelocity(MathLibrary::Vector2 max) { m_maxVelocity = max; }
     void addForce(MathLibrary::Vector2 force);
 
 
@@ -114,7 +114,7 @@ private:
     Collider* m_collider;
     DynamicArray<Component*> m_components;
     MathLibrary::Vector2 m_velocity;
-    MathLibrary::Vector2 m_maxVelocity;
+    float m_maxSpeed;
 };
 
 template<typename T>

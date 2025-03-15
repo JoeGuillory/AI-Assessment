@@ -48,10 +48,15 @@ void Actor::onCollision(Actor* other)
 
 void Actor::checkVelocity()
 {
-    if (m_velocity.x > m_maxVelocity.x)
-        m_velocity.x = m_maxVelocity.x;
-    if (m_velocity.y > m_maxVelocity.y)
-        m_velocity.y = m_maxVelocity.y;
+    if (m_velocity.x > m_maxSpeed)
+        m_velocity.x = m_maxSpeed;
+    if (m_velocity.x < -m_maxSpeed)
+        m_velocity.x = -m_maxSpeed;
+
+    if (m_velocity.y > m_maxSpeed)
+        m_velocity.y = m_maxSpeed;
+    if (m_velocity.y < -m_maxSpeed)
+        m_velocity.y = -m_maxSpeed;
 }
 
 void Actor::update(float deltaTime)
