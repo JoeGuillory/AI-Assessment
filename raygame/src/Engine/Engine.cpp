@@ -31,7 +31,7 @@ void Engine::start()
 	//Start the scene
 	addScene(new DemoScene());
 	addScene(new SampleScene());
-	m_currentSceneIndex = addScene(new BehaviorDemo());
+	m_currentSceneIndex =  addScene(new BehaviorDemo());
 	m_scenes[m_currentSceneIndex]->start();
 }
 
