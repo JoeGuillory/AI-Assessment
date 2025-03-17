@@ -56,7 +56,7 @@ public:
     bool RemoveComponent(T* component);
 
     template<typename T>
-    T* GetComponent(T* component);
+    T* GetComponent();
 
 
     MathLibrary::Vector2 getVelocity() { return m_velocity; }
@@ -144,19 +144,16 @@ inline bool Actor::RemoveComponent(T* component)
 }
 
 template<typename T>
-inline T* Actor::GetComponent(T* component)
+inline T* Actor::GetComponent()
 {
-    Component* ptr = dynamic_cast<Component*>(component);
-    if (ptr == nullptr)
-        return nullptr;
-    else
+   
+    for (Component* element : m_components)
     {
-        for (Component* element : m_components)
+        if (dynamic_cast<T*>(element) != nullptr)
         {
-            if (element == component)
-            {
-                return dynamic_cast<T*>(element);
-            }
+            return dynamic_cast<T*>(element);
         }
     }
+    return nullptr;
+    
 }

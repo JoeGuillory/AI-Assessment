@@ -6,6 +6,7 @@ namespace Pathfinding
 {
 	void NodeMap::Initialise(std::vector<std::string> asciiMap)
 	{
+		
 		const char emptySquare = '0';
 
 		// assume all strings are the same length, so we'll size the map according to the number of strings and the length of the first one
@@ -65,19 +66,15 @@ namespace Pathfinding
 
 	void NodeMap::Draw(bool drawConnections)
 	{
-		// red blocks
-		Color cellColor;
-		cellColor.a = 255;
-		cellColor.r = 255;
-		cellColor.g = 0;
-		cellColor.b = 0;
+	
+		
+		Color cellColor = LIME;
+		Color otherColor = BEIGE;
+		
 
 		// grey lines for node edges
-		Color lineColor;
-		lineColor.a = 255;
-		lineColor.r = 128;
-		lineColor.g = 128;
-		lineColor.b = 128;
+		Color lineColor = BLACK;
+		
 
 		for (int y = 0; y < height; y++)
 		{
@@ -87,6 +84,7 @@ namespace Pathfinding
 				if (node == nullptr)
 				{
 					// draw a solid block in empty squares without a navigation node
+					//DrawTextureEx(grassTexture, { x * cellSize, y * cellSize }, 0, cellSize / 2, WHITE);
 					DrawRectangle(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1, cellColor);
 				}
 				else
@@ -96,6 +94,7 @@ namespace Pathfinding
 					{
 						Node* other = node->connections[i].target;
 						DrawLine(node->position.x, node->position.y, other->position.x, other->position.y, lineColor);
+						DrawRectangle(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1, otherColor);
 					}
 				}
 			}

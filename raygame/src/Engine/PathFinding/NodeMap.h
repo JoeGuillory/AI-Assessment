@@ -2,6 +2,8 @@
 #include <string>
 #include "pathfinding.h"
 
+class Texture2D;
+
 namespace Pathfinding
 {
 	// class that represents the nodes on a map, shared between all Pathfind objects
@@ -13,7 +15,7 @@ namespace Pathfinding
 		float cellSize;
 
 		Node** nodes;
-
+		
 		void Initialise(std::vector<std::string> asciiMap);
 		void Draw(bool drawConnections);
 

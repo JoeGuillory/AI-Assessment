@@ -11,8 +11,8 @@ Wander::Wander(Actor* owner, float maxspeed,float weight)
 {
 	m_owner = owner;
 	m_maxSpeed = maxspeed;
-	m_unitScaler = 90;
-	m_distance = 200;
+	m_unitScaler = 20;
+	m_distance = 100;
 	m_enabled = true;
 	if (weight > 1)
 		m_weight = 1;
@@ -28,13 +28,22 @@ Wander::~Wander()
 
 void Wander::start()
 {
+	m_time = 0;
 }
 
 void Wander::update(float deltaTime)
 {
+	MathLibrary::Vector2 newDestination;
 	if (m_enabled)
 	{
-		m_owner->addForce(SteeringForce(getDestination(),m_owner->getTransform()->getLocalPosition(),m_maxSpeed) * m_weight * deltaTime);
+		m_time -= 1 * deltaTime;
+		if (m_time < 0)
+		{
+			newDestination = getDestination();
+			
+			m_time = 1.5;
+		}
+		m_owner->addForce(SteeringForce(newDestination, m_owner->getTransform()->getLocalPosition(), m_maxSpeed) * m_weight * deltaTime);
 		m_owner->getTransform()->translate(m_owner->getVelocity() * deltaTime);
 		m_owner->getTransform()->setRotation(-atan2(m_owner->getVelocity().y, m_owner->getVelocity().x));
 	}

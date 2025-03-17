@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Transform2D.h"
 #include "PathFinding.h"
+class Wander;
 class PathAgent : public Actor
 {
 public:
@@ -15,11 +16,13 @@ public:
 	void GoToNode(Pathfinding::Node* node);
 	void SetNode(Pathfinding::Node* node);
 	void SetSearchType(int type) { searchType = type; }
+	void CheckState(float deltaTime);
+	void WrapPosition();
 	std::vector<Pathfinding::Node*> path;
 	int currentIndex;
 	Pathfinding::Node* currentNode;
-	float speed;
-
+	Wander* m_wander;
+	int m_state;
 private:
 
 	int searchType;

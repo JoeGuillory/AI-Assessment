@@ -24,7 +24,7 @@ void SampleScene::start()
 	m_pathAgent = new PathAgent();
 	addActor(m_pathAgent);
 	m_pathAgent->SetNode(m_nodeMap.GetNode(1,1));
-	m_pathAgent->speed = 64;
+	m_pathAgent->setMaxSpeed(64);
 
 }
 

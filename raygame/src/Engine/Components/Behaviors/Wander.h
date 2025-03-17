@@ -23,4 +23,5 @@ public:
 private:
 	float m_distance;
 	float m_unitScaler;
+	float m_time;
 };

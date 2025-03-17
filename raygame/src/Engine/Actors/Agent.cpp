@@ -43,7 +43,11 @@ void Agent::start()
 	m_bAtack = false;
 	setMaxSpeed(400);
 	AddComponent<SpriteComponent>(new SpriteComponent(this, "Images/enemy.png"));
-
+	m_seek = AddComponent<Seek>(new Seek(this, {GetMousePosition().x,GetMousePosition().y}, getMaxSpeed(), 1));
+	m_arrive = AddComponent<Arrival>(new Arrival(this, { GetMousePosition().x,GetMousePosition().y }, getMaxSpeed(), 1));
+	m_arrive->disable();
+	m_arrive->setRadius(100);
+	getTransform()->scale({ 20,20 });
 	m_behaviourTree =
 		(new Selector())->add(
 			(new Sequence())->add(
@@ -54,38 +58,18 @@ void Agent::start()
 				new SeekAction()));
 	getTransform()->setLocalPosition({ 100,100 });
 
-	/*
-	auto evade = AddComponent<Evade>(new Evade(this, m_target, m_maxSpeed, 1));
-	auto persue = AddComponent<Persue>(new Persue(this, m_target, m_maxSpeed, 1));
-	auto wander = AddComponent<Wander>(new Wander(this,m_maxSpeed,1));
-	wander->setScaler(100);
-	wander->setDistance(5);
-	seek = AddComponent<Seek>(new Seek(this, m_target, m_maxSpeed, 1));
-	flee = AddComponent<Flee>(new Flee(this, m_target, m_maxSpeed, 1));
-	arrive = AddComponent<Arrival>(new Arrival(this, m_target, m_maxSpeed, 1));
-	m_state = STATE_SEEK;
-	arrive->setRadius(225);
-	persue->disable();
-	evade->disable();
-	wander->setWeight(0);
-	seek->setWeight(1);
-	flee->setWeight(0);
-	arrive->setWeight(0);*/
 }
 
 void Agent::update(float deltaTime)
 {
 	Actor::update(deltaTime);
+	m_seek->updatePoint({ GetMousePosition().x,GetMousePosition().y });
+	m_arrive->updatePoint({ GetMousePosition().x,GetMousePosition().y });
 	if(m_behaviourTree != nullptr)
 		m_behaviourTree->tick(this, deltaTime);
 	getTransform()->translate(getVelocity() * deltaTime);
 	
-	DrawText(std::to_string(getVelocity().x).c_str(),60,60,10,WHITE);
-	DrawText(std::to_string(getVelocity().y).c_str(),60,80,10,WHITE);
-	DrawText(std::to_string(GetMousePosition().x).c_str(),120,60,10,WHITE);
-	DrawText(std::to_string(GetMousePosition().y).c_str(),120,80,10,WHITE);
 	
-	//CheckState();
 	WrapPosition();
 }
 
@@ -100,35 +84,35 @@ void Agent::CheckState()
 	{
 	case STATE_SEEK:
 		
-		seek->setWeight(1);
+		m_seek->setWeight(1);
 		if (m_target->getVelocity().x == 0 || m_target->getVelocity().y == 0)
 		{
 			float distance = (m_target->getTransform()->getWorldPosition() - getTransform()->getWorldPosition()).getMagnitude();
-			if (distance < arrive->getRadius())
+			if (distance < m_arrive->getRadius())
 			{
-				seek->setWeight(0);
+				m_seek->setWeight(0);
 				m_state = STATE_ARRIVE;
 			}
 		}
 		else if(m_target->getVelocity().x != 0 || m_target->getVelocity().y != 0)
 		{
-			seek->setWeight(0);
+			m_seek->setWeight(0);
 			m_state = STATE_FLEE;
 		}
 		break;
 	case STATE_FLEE:
-		flee->setWeight(1);
+		m_flee->setWeight(1);
 		if (m_target->getVelocity().x == 0 || m_target->getVelocity().y == 0)
 		{
-			flee->setWeight(0);
+			m_flee->setWeight(0);
 			m_state = STATE_SEEK;
 		}
 		break;
 	case STATE_ARRIVE:
-		arrive->setWeight(1);
+		m_arrive->setWeight(1);
 		if (m_target->getVelocity().x != 0 || m_target->getVelocity().y != 0)
 		{
-			arrive->setWeight(0);
+			m_arrive->setWeight(0);
 			m_state = STATE_FLEE;
 		}
 		break;

@@ -28,8 +28,8 @@ protected:
 private:
 	Actor* m_target;
 	int m_state;
-	Seek* seek;
-	Flee* flee;
-	Arrival* arrive;
+	Seek* m_seek;
+	Flee* m_flee;
+	Arrival* m_arrive;
 	
 };

@@ -29,9 +29,9 @@ void Engine::start()
 	SetTargetFPS(0);
 
 	//Start the scene
-	addScene(new DemoScene());
+	m_currentSceneIndex = addScene(new DemoScene());
 	addScene(new SampleScene());
-	m_currentSceneIndex =  addScene(new BehaviorDemo());
+	 addScene(new BehaviorDemo());
 	m_scenes[m_currentSceneIndex]->start();
 }
 
