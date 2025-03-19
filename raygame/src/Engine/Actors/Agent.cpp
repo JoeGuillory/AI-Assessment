@@ -52,7 +52,7 @@ void Agent::start()
 		(new Selector())->add(
 			(new Sequence())->add(
 				new MouseCloseCondition())->add(
-				new AttackAction()))->add(
+				new ArriveAction()))->add(
 			(new Sequence())->add(
 				new StopAttackAction())->add(
 				new SeekAction()));

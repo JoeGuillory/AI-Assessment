@@ -202,6 +202,9 @@
     <ClInclude Include="src\Engine\BehaviourTree\Behaviours.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\SelectorEnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Images\bullet.png">

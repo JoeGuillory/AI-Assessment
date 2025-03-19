@@ -210,6 +210,7 @@
     <ClInclude Include="src\Engine\Scenes\SampleScene.h" />
     <ClInclude Include="src\Engine\Scene.h" />
     <ClInclude Include="src\Engine\Components\SpriteComponent.h" />
+    <ClInclude Include="src\Engine\SelectorEnum.h" />
     <ClInclude Include="src\Engine\Transform2D.h" />
   </ItemGroup>
   <ItemGroup>

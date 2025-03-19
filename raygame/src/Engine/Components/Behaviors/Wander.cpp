@@ -11,7 +11,7 @@ Wander::Wander(Actor* owner, float maxspeed,float weight)
 {
 	m_owner = owner;
 	m_maxSpeed = maxspeed;
-	m_unitScaler = 20;
+	m_unitScaler = 100;
 	m_distance = 100;
 	m_enabled = true;
 	if (weight > 1)

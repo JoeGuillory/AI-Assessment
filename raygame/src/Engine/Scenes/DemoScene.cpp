@@ -44,6 +44,7 @@ void DemoScene::start()
 	m_pathAgent = new PathAgent();
 	m_actor = new Agent();
 	m_actor->setMaxSpeed(400);
+	m_actor->setTarget(m_pathAgent);
 	addActor(m_actor);
 	addActor(m_pathAgent);
 	m_pathAgent->SetNode(m_nodeMap.GetNode(1,1));

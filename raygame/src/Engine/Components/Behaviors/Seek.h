@@ -1,6 +1,7 @@
 #pragma once
 #include "Behavior.h"
 #include "Vector2.h"
+#include "SelectorEnum.h"
 class Seek : public Behavior
 {
 public:
@@ -16,4 +17,5 @@ public:
 	void updatePoint(MathLibrary::Vector2 point) { m_point = point; }
 private:
 	MathLibrary::Vector2 m_point;
+	SelectorEnum m_selected;
 };

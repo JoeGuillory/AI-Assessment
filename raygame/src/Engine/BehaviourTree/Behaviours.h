@@ -24,7 +24,7 @@ public:
 	}
 };
 
-class AttackAction : public BehaviourTree
+class ArriveAction : public BehaviourTree
 {
 	virtual Status update(Agent* agent, float deltaTime)
 	{
@@ -32,7 +32,6 @@ class AttackAction : public BehaviourTree
 		seek->disable();
 		Arrival* arrive = agent->GetComponent<Arrival>();
 		arrive->enable();
-		
 		
 		return BH_SUCCESS;
 	}
@@ -42,7 +41,6 @@ class StopAttackAction : public BehaviourTree
 {
 	virtual Status update(Agent* agent, float deltaTime)
 	{
-		
 		return BH_SUCCESS;
 	}
 };
@@ -55,13 +53,6 @@ class SeekAction : public BehaviourTree
 		seek->enable();
 		Arrival* arrive = agent->GetComponent<Arrival>();
 		arrive->disable();
-		//MathLibrary::Vector2 mouse = { GetMousePosition().x , GetMousePosition().y };
-		//MathLibrary::Vector2 direction = mouse - agent->getTransform()->getWorldPosition();
-
-		//// acceleration = direction normal * max speed * dt
-		//agent->addForce(direction.getNormalized() * agent->getMaxSpeed() * deltaTime);
-		//agent->getTransform()->setRotation(-atan2(mouse.y - agent->getTransform()->getWorldPosition().y, mouse.x - agent->getTransform()->getWorldPosition().x));
-
 		return BH_SUCCESS;
 	}
 };

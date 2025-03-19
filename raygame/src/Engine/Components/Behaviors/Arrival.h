@@ -1,5 +1,6 @@
 #pragma once
 #include "Behavior.h"
+#include "SelectorEnum.h"
 
 class Arrival : public Behavior
 {
@@ -19,4 +20,6 @@ public:
 private:
 	float m_radius;
 	MathLibrary::Vector2 m_point;
+	SelectorEnum m_selected;
+	
 };
