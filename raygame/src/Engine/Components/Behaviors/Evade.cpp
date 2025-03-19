@@ -35,4 +35,7 @@ void Evade::update(float deltaTime)
 
 void Evade::end()
 {
+
+
+
 }

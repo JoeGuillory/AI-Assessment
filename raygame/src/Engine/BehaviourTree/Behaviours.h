@@ -17,10 +17,13 @@ public:
 		MathLibrary::Vector2 mouse = { GetMousePosition().x,GetMousePosition().y };
 		// distance = magnitude of (mouse - position)
 		float distance = (mouse - agent->getTransform()->getWorldPosition()).getMagnitude();
-		if (distance <= 100)
+		if (distance <= 25)
 			return BH_SUCCESS;
 
+		Arrival* arrive = agent->GetComponent<Arrival>();
+		arrive->disable();
 		return BH_FAILURE;
+
 	}
 };
 
@@ -51,8 +54,44 @@ class SeekAction : public BehaviourTree
 	{
 		Seek* seek = agent->GetComponent<Seek>();
 		seek->enable();
-		Arrival* arrive = agent->GetComponent<Arrival>();
-		arrive->disable();
+		return BH_SUCCESS;
+	}
+};
+
+class TargetNotClose : public BehaviourTree
+{
+	virtual Status update(Agent* agent, float deltaTime)
+	{
+		float distance = (agent->getTarget()->getTransform()->getWorldPosition() - agent->getTransform()->getWorldPosition()).getMagnitude();
+		if (distance > 100)
+			return BH_SUCCESS;
+
+		return BH_FAILURE;
+	}
+};
+class TargetClose : public BehaviourTree
+{
+	virtual Status update(Agent* agent, float deltaTime)
+	{
+		float distance = (agent->getTarget()->getTransform()->getWorldPosition() - agent->getTransform()->getWorldPosition()).getMagnitude();
+		if (distance < 100)
+			return BH_SUCCESS;
+
+		Evade* evade = agent->GetComponent<Evade>();
+		evade->disable();
+		return BH_FAILURE;
+	}
+};
+
+class EvadeTarget : public BehaviourTree
+{
+	virtual Status update(Agent* agent, float deltaTime)
+	{
+		Seek* seek = agent->GetComponent<Seek>();
+		seek->disable();
+		Evade* evade = agent->GetComponent<Evade>();
+		evade->enable();
+
 		return BH_SUCCESS;
 	}
 };

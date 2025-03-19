@@ -24,16 +24,16 @@ void Input::start()
 
 void Input::update(float deltaTime)
 {
-	m_owner->setVelocity({ 0,0 });
+	
 	if (IsKeyDown(KEY_W))
 	{
-		m_owner->setVelocity(getOwner()->getTransform()->getForward() * m_speed);
+		m_owner->addForce(getOwner()->getTransform()->getForward() * m_speed );
 		getOwner()->getTransform()->translate(m_owner->getVelocity()  * deltaTime);
 	}
 
 	if(IsKeyDown(KEY_S))
 	{
-		m_owner->setVelocity(getOwner()->getTransform()->getForward() * -m_speed);
+		m_owner->addForce(getOwner()->getTransform()->getForward() * -m_speed);
 		getOwner()->getTransform()->translate(m_owner->getVelocity()  * deltaTime);
 	}
 	

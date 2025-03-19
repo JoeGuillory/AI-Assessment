@@ -29,9 +29,8 @@ void Engine::start()
 	SetTargetFPS(0);
 
 	//Start the scene
-	m_currentSceneIndex = addScene(new DemoScene());
-	addScene(new SampleScene());
-	 addScene(new BehaviorDemo());
+	 addScene(new DemoScene());
+	 m_currentSceneIndex = addScene(new BehaviorDemo());
 	m_scenes[m_currentSceneIndex]->start();
 }
 
@@ -73,7 +72,7 @@ void Engine::run()
 	{
 		//Calculate deltatime
 		float deltaTime = RAYLIB_H::GetFrameTime();
-
+		
 		//Update scene
 		update(deltaTime);
 

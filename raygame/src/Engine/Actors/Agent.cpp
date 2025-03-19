@@ -45,17 +45,16 @@ void Agent::start()
 	AddComponent<SpriteComponent>(new SpriteComponent(this, "Images/enemy.png"));
 	m_seek = AddComponent<Seek>(new Seek(this, {GetMousePosition().x,GetMousePosition().y}, getMaxSpeed(), 1));
 	m_arrive = AddComponent<Arrival>(new Arrival(this, { GetMousePosition().x,GetMousePosition().y }, getMaxSpeed(), 1));
+	m_evade = AddComponent<Evade>(new Evade(this, m_target, getMaxSpeed(), 1));
+	m_evade->disable();
 	m_arrive->disable();
 	m_arrive->setRadius(100);
 	getTransform()->scale({ 20,20 });
 	m_behaviourTree =
 		(new Selector())->add(
-			(new Sequence())->add(
-				new MouseCloseCondition())->add(
-				new ArriveAction()))->add(
-			(new Sequence())->add(
-				new StopAttackAction())->add(
-				new SeekAction()));
+			(new Sequence())->add(new MouseCloseCondition())->add(new ArriveAction()))->add(
+			(new Sequence())->add(new StopAttackAction())->add(new TargetNotClose())->add(new SeekAction())->add(
+			(new Sequence())->add(new TargetClose())->add((new EvadeTarget()))));
 	getTransform()->setLocalPosition({ 100,100 });
 
 }

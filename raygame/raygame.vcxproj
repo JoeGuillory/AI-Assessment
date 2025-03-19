@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\Actors\OtherAgent.cpp" />
     <ClCompile Include="src\Engine\Actors\PathAgent.cpp" />
     <ClCompile Include="src\Engine\BehaviourTree\BehaviourTree.cpp" />
     <ClCompile Include="src\Engine\BehaviourTree\Composite.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="src\Engine\Transform2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\Actors\OtherAgent.h" />
     <ClInclude Include="src\Engine\Actors\PathAgent.h" />
     <ClInclude Include="src\Engine\BehaviourTree\Behaviours.h" />
     <ClInclude Include="src\Engine\BehaviourTree\BehaviourTree.h" />

@@ -1,6 +1,7 @@
 #include "DemoScene.h"
 #include "PathAgent.h"
 #include "Agent.h"
+#include "Engine.h"
 void DemoScene::start()
 {
 	Scene::start();
@@ -86,6 +87,10 @@ void DemoScene::update(float deltaTime)
 void DemoScene::end()
 {
 	Scene::end();
+	removeActor(m_actor);
+	removeActor(m_pathAgent);
+	delete m_actor;
+	delete m_pathAgent;
 }
 
 void DemoScene::draw()

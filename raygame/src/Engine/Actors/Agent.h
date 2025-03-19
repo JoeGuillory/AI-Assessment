@@ -3,6 +3,7 @@
 #include "Vector2.h"
 class Seek;
 class Flee;
+class Evade;
 class Arrival;
 class Behavior;
 class BehaviourTree;
@@ -18,6 +19,7 @@ public:
 	void update(float deltaTime);
 	void end();
 	void setTarget(Actor* actor) { m_target = actor; }
+	Actor* getTarget() { return m_target; }
 	void CheckState();
 	void WrapPosition();
 	void SetAttack(bool state) { m_bAtack = state; }
@@ -30,6 +32,7 @@ private:
 	int m_state;
 	Seek* m_seek;
 	Flee* m_flee;
+	Evade* m_evade;
 	Arrival* m_arrive;
 	
 };

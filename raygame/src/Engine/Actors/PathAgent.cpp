@@ -26,6 +26,7 @@ void PathAgent::SetNode(Pathfinding::Node* node)
     setMaxSpeed(150);
     AddComponent<SpriteComponent>(new SpriteComponent(this, "Images/player.png"));
     m_wander = AddComponent<Wander>(new Wander(this, getMaxSpeed(), 0));
+    m_wander->setWeight(0);
 }
 
 void PathAgent::CheckState(float deltaTime)
