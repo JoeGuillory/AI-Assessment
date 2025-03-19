@@ -39,6 +39,9 @@ void Engine::update(float deltaTime)
 	//Clean up actors marked for destruction
 	destroyActorsInList();
 
+	if (!getCurrentScene()->getStarted())
+		getCurrentScene()->start();
+
 	//Update scene
 	m_scenes[m_currentSceneIndex]->update(deltaTime);
 	m_scenes[m_currentSceneIndex]->updateUI(deltaTime);
@@ -78,6 +81,18 @@ void Engine::run()
 
 		//Draw current scene
 		draw();
+
+		if (IsKeyPressed(KEY_N))
+		{
+			if (getCurrentSceneIndex() == 1)
+			{
+				setCurrentScene(0);
+			}
+			else
+			{
+				setCurrentScene(1);
+			}
+		}
 	}
 
 	end();
