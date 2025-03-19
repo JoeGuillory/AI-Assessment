@@ -146,7 +146,6 @@ inline bool Actor::RemoveComponent(T* component)
 template<typename T>
 inline T* Actor::GetComponent()
 {
-   
     for (Component* element : m_components)
     {
         if (dynamic_cast<T*>(element) != nullptr)
