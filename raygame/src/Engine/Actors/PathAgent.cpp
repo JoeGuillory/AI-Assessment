@@ -157,21 +157,25 @@ void PathAgent::GoToNode(Pathfinding::Node* node)
  
     switch (searchType)
     {
-    case 1:
-        
-        path = DijkstrasSearch(currentNode, node);
-        
-        currentIndex = 0;
-        break;
-    case 2:
-        
-        path = AStar(currentNode, node);
-       
-        currentIndex = 0;
-        break;
-    default:
-        path = DijkstrasSearch(currentNode, node);
-        currentIndex = 0;
+            case 1:
+            {   
+                path = DijkstrasSearch(currentNode, node);   
+                currentIndex = 0;
+                break;
+            }
+            case 2:
+            {
+
+                path = AStar(currentNode, node);
+
+                currentIndex = 0;
+                break;
+            }
+            default:
+            {
+                path = DijkstrasSearch(currentNode, node);
+                currentIndex = 0;
+            }
     }
 }
 

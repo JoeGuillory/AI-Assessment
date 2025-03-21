@@ -65,7 +65,10 @@ class TargetNotClose : public BehaviourTree
 		float distance = (agent->getTarget()->getTransform()->getWorldPosition() - agent->getTransform()->getWorldPosition()).getMagnitude();
 		if (distance > 100)
 			return BH_SUCCESS;
-
+		
+		
+		Seek* seek = agent->GetComponent<Seek>();
+		seek->disable();
 		return BH_FAILURE;
 	}
 };

@@ -52,9 +52,10 @@ void Agent::start()
 	getTransform()->scale({ 20,20 });
 	m_behaviourTree =
 		(new Selector())->add(
-			(new Sequence())->add(new MouseCloseCondition())->add(new ArriveAction()))->add(
+			(new Sequence())->add(new MouseCloseCondition())->add(new ArriveAction()))->add((
+		new Selector())->add(
 			(new Sequence())->add(new StopAttackAction())->add(new TargetNotClose())->add(new SeekAction())->add(
-			(new Sequence())->add(new TargetClose())->add((new EvadeTarget()))));
+			(new Sequence())->add(new TargetClose())->add((new EvadeTarget())))));
 	getTransform()->setLocalPosition({ 100,100 });
 
 }
